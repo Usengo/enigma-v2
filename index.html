@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"/>
+<meta name="theme-color" content="#0C0A10"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="Enigma Alpha"/>
+<meta name="description" content="Enigma Alpha Barber Studio — Premium barbershop. Precision cuts, elevated style. Book your session and pay with ease."/>
+<meta name="keywords" content="barber,barbershop,haircut,fade,Enigma Alpha,Godswill Uduak Usen"/>
+<meta property="og:title" content="Enigma Alpha Barber Studio"/>
+<meta property="og:description" content="Premium barbershop booking — Precision cuts, elevated style."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="assets/icons/icon-512.png"/>
+<link rel="manifest" href="manifest.json"/>
+<link rel="icon" href="assets/icons/icon-192.png"/>
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<title>Enigma Alpha Barber Studio</title>
+
+<style>
+/* ================================================================
+   ENIGMA ALPHA BARBER STUDIO — PRODUCTION v4
+   Modern Luxury 2026 Design
+   Fonts: Playfair Display (headings) + Outfit (body)
+   Palette: Deep Obsidian · Burnished Gold · Warm Parchment
+   Responsive: 320px → 2560px+ (all Chrome DevTools presets)
+================================================================ */
+
+:root {
+  /* Dark theme (default) */
+  --bg:  #0C0A10;
+  --bg1: #141218;
+  --bg2: #1C1924;
+  --bg3: #242130;
+  --sur: #1A1720;
+  --bd:  rgba(255,255,255,.07);
+  --bd2: rgba(255,255,255,.12);
+  --bd3: rgba(255,255,255,.19);
+  --tx:  #EDE9E3;
+  --tx2: #A89F96;
+  --tx3: #6B6260;
+  --tx4: #3F3C3A;
+  --gd:  #C89840;
+  --gd2: #DDB060;
+  --gd3: #A07828;
+  --gdm: rgba(200,152,64,.13);
+  --gdg: rgba(200,152,64,.22);
+  --err: #C0404A;
+  --ok:  #4A9870;
+  --r1:  6px;
+  --r2:  10px;
+  --r3:  14px;
+  --r4:  20px;
+  --s1:  0 1px 4px rgba(0,0,0,.35);
+  --s2:  0 4px 16px rgba(0,0,0,.45);
+  --sg:  0 4px 20px rgba(200,152,64,.25);
+  --nav: 62px;
+  --ease: cubic-bezier(.4,0,.2,1);
+}
+
+[data-theme="light"] {
+  --bg:  #F5F2EC;
+  --bg1: #EBE7DC;
+  --bg2: #E2DDD0;
+  --bg3: #D8D2C0;
+  --sur: #FAFAF8;
+  --bd:  rgba(50,38,16,.09);
+  --bd2: rgba(50,38,16,.15);
+  --bd3: rgba(50,38,16,.22);
+  --tx:  #1C1810;
+  --tx2: #4A4038;
+  --tx3: #8A7A68;
+  --tx4: #B8A898;
+  --gd:  #8A6018;
+  --gd2: #AA7828;
+  --gd3: #6A4810;
+  --gdm: rgba(138,96,24,.10);
+  --gdg: rgba(138,96,24,.18);
+  --err: #AA2A32;
+  --ok:  #2A7050;
+  --s1:  0 1px 4px rgba(0,0,0,.09);
+  --s2:  0 4px 16px rgba(0,0,0,.12);
+  --sg:  0 4px 20px rgba(138,96,24,.18);
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg); color: var(--tx);
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-size: 15px; line-height: 1.6; font-weight: 400;
+  min-height: 100dvh; overflow-x: hidden;
+  transition: background .3s var(--ease), color .3s var(--ease);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Animations ── */
+@keyframes sk  { 0%{background-position:-500px 0} 100%{background-position:500px 0} }
+@keyframes up  { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fi  { from{opacity:0} to{opacity:1} }
+@keyframes sp  { to{transform:rotate(360deg)} }
+@keyframes pu  { 0%,100%{opacity:1} 50%{opacity:.35} }
+@keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+
+/* ── Skeleton shimmer ── */
+.skel {
+  background: linear-gradient(90deg, var(--bg2) 0%, var(--bg3) 45%, var(--bg2) 90%);
+  background-size: 500px 100%;
+  animation: sk 1.5s infinite linear;
+  border-radius: var(--r2);
+}
+
+/* ── Toast notification ── */
+#toast {
+  position: fixed; bottom: 18px; left: 50%;
+  transform: translateX(-50%) translateY(60px);
+  background: var(--gd); color: #fff;
+  padding: 8px 18px; border-radius: var(--r2);
+  font-size: 13px; font-weight: 600;
+  z-index: 9999; opacity: 0; transition: all .3s var(--ease);
+  pointer-events: none; max-width: 88vw; text-align: center;
+  white-space: nowrap; box-shadow: var(--sg);
+}
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── Page system ── */
+.page { display: none; animation: fi .3s ease; }
+.page.active { display: block; }
+
+/* ================================================================
+   NAVIGATION
+================================================================ */
+.nav {
+  position: sticky; top: 0; z-index: 300;
+  height: var(--nav);
+  display: flex; align-items: center;
+  padding: 0 16px; gap: 8px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--bd);
+  transition: background .3s var(--ease), border-color .3s var(--ease);
+}
+.nav.scrolled {
+  background: rgba(12,10,16,.93);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+[data-theme="light"] .nav.scrolled { background: rgba(245,242,236,.93); }
+
+/* Brand */
+.brand {
+  display: flex; flex-direction: column; cursor: pointer;
+  flex-shrink: 0; min-width: 0; margin-right: 4px;
+}
+.brand-n {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(12px, 3vw, 17px); font-weight: 800;
+  color: var(--gd); letter-spacing: 2px; text-transform: uppercase;
+  line-height: 1; white-space: nowrap;
+}
+.brand-s {
+  font-size: 8px; letter-spacing: 4px; color: var(--tx3);
+  text-transform: uppercase; white-space: nowrap;
+}
+
+/* Desktop nav links — hidden below 768px */
+.dnav {
+  display: none; align-items: center; gap: 2px;
+  background: var(--bg1); border: 1px solid var(--bd);
+  border-radius: var(--r2); padding: 3px; flex-shrink: 0;
+}
+@media (min-width: 768px) { .dnav { display: flex; } }
+.dnl {
+  background: none; border: none; color: var(--tx3);
+  font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: .3px; text-transform: uppercase;
+  cursor: pointer; padding: 7px 14px; border-radius: var(--r1);
+  transition: all .2s; min-height: 34px; white-space: nowrap;
+}
+.dnl:hover { color: var(--tx); background: var(--bg2); }
+.dnl.on { background: var(--gd); color: #fff; box-shadow: var(--sg); }
+
+/* Spacer */
+.nav-spacer { flex: 1; }
+
+/* Right actions */
+.nav-act { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+
+/* Theme button */
+.tbtn {
+  background: var(--bg1); border: 1px solid var(--bd2);
+  color: var(--tx2); width: 36px; height: 36px; border-radius: var(--r1);
+  cursor: pointer; font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s; flex-shrink: 0;
+}
+.tbtn:hover { border-color: var(--gd); color: var(--gd); }
+
+/* Cart button */
+.cart-btn {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--gd); color: #fff; border: none;
+  padding: 8px 14px; border-radius: var(--r2);
+  cursor: pointer; font-family: 'Outfit', sans-serif;
+  font-size: 13px; font-weight: 600;
+  transition: all .2s; box-shadow: var(--sg);
+  flex-shrink: 0; min-height: 36px; white-space: nowrap;
+}
+.cart-btn:hover { background: var(--gd2); transform: translateY(-1px); }
+.cart-btn:active { transform: none; }
+.cart-lbl { display: none; }
+@media (min-width: 480px) { .cart-lbl { display: inline; } }
+.cart-n {
+  background: rgba(255,255,255,.25); color: #fff;
+  border-radius: var(--r1); padding: 1px 6px;
+  font-size: 11px; font-weight: 700; min-width: 18px; text-align: center;
+}
+
+/* Hamburger — only on mobile (< 768px) */
+.ham {
+  display: flex; flex-direction: column; gap: 4px; justify-content: center;
+  background: var(--bg1); border: 1px solid var(--bd2);
+  width: 36px; height: 36px; border-radius: var(--r1);
+  cursor: pointer; padding: 0 8px; flex-shrink: 0; transition: all .2s;
+}
+@media (min-width: 768px) { .ham { display: none; } }
+.ham span {
+  display: block; height: 1.5px; background: var(--tx2);
+  border-radius: 2px; transition: all .25s var(--ease); transform-origin: center;
+}
+.ham.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+.ham.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.ham.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+/* Mobile dropdown menu */
+.mobm {
+  position: fixed; top: var(--nav); left: 0; right: 0;
+  background: var(--bg1); border-bottom: 1px solid var(--bd2);
+  padding: 10px 14px; z-index: 250;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+  transform: translateY(-110%); opacity: 0;
+  transition: transform .28s var(--ease), opacity .28s var(--ease);
+  pointer-events: none;
+}
+.mobm.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+.mnl {
+  background: var(--bg2); border: 1px solid var(--bd);
+  color: var(--tx2); font-family: 'Outfit', sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: .3px; text-transform: uppercase;
+  padding: 10px; border-radius: var(--r1); cursor: pointer;
+  transition: all .2s; text-align: center; min-height: 40px;
+}
+.mnl.on, .mnl:hover { background: var(--gd); color: #fff; border-color: var(--gd); }
+
+/* Gold separator rule */
+.grule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--gd) 35%, var(--gd2) 50%, var(--gd) 65%, transparent 100%);
+  opacity: .3;
+}
+
+/* ================================================================
+   HERO
+================================================================ */
+.hero {
+  min-height: calc(100svh - var(--nav));
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 52px 22px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 70% 55% at 50% 65%, rgba(200,152,64,.07) 0%, transparent 70%);
+}
+.hchip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--gdm); border: 1px solid rgba(200,152,64,.2);
+  color: var(--gd); font-size: 11px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; padding: 6px 16px; border-radius: var(--r2);
+  margin-bottom: 20px; animation: up .5s .1s both;
+}
+.hh {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 7vw, 78px);
+  font-weight: 800; color: var(--tx); line-height: 1.05;
+  margin-bottom: 12px; animation: up .5s .2s both;
+}
+.hh em { color: var(--gd); font-style: italic; }
+.hp {
+  font-size: clamp(14px, 2vw, 16px); color: var(--tx2);
+  max-width: 480px; margin: 0 auto 28px;
+  font-weight: 300; line-height: 1.75; animation: up .5s .3s both;
+}
+.shq {
+  background: var(--sur); border: 1px solid var(--bd2);
+  border-radius: var(--r3); padding: 22px 26px; max-width: 540px;
+  margin: 0 auto 32px; text-align: left;
+  animation: up .5s .4s both; box-shadow: var(--s2); position: relative;
+}
+.shq::before {
+  content: '\201C'; font-family: 'Playfair Display', serif; font-size: 56px;
+  color: var(--gd); opacity: .13; position: absolute;
+  top: -4px; left: 14px; line-height: 1;
+}
+.shq p {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(14px, 2vw, 15px); color: var(--tx2);
+  line-height: 1.9; padding-left: 6px;
+}
+.shq cite {
+  display: block; font-size: 11px; letter-spacing: 2px; color: var(--gd);
+  margin-top: 10px; font-style: normal; font-weight: 600;
+  text-transform: uppercase; padding-left: 6px;
+}
+.hcta {
+  display: flex; gap: 10px; justify-content: center;
+  flex-wrap: wrap; animation: up .5s .5s both;
+}
+
+/* ── Stats bar ── */
+.stats {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  background: var(--bg1);
+  border-top: 1px solid var(--bd); border-bottom: 1px solid var(--bd);
+}
+.stat { padding: 20px 8px; text-align: center; border-right: 1px solid var(--bd); }
+.stat:last-child { border-right: none; }
+.stn {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 4vw, 38px); font-weight: 800; color: var(--gd); line-height: 1;
+}
+.stl { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--tx3); margin-top: 5px; }
+
+/* ── Section heading ── */
+.sec { padding: 52px 22px 0; text-align: center; }
+.schip {
+  display: inline-block; background: var(--gdm); border: 1px solid rgba(200,152,64,.2);
+  color: var(--gd); font-size: 10px; font-weight: 600; letter-spacing: 2.5px;
+  text-transform: uppercase; padding: 5px 14px; border-radius: var(--r2); margin-bottom: 10px;
+}
+.sh { font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 38px); font-weight: 800; color: var(--tx); margin-bottom: 6px; }
+.ss { font-size: 13px; color: var(--tx3); max-width: 360px; margin: 0 auto; }
+
+/* ── Filter tabs ── */
+.flts { display: flex; gap: 6px; padding: 20px 22px 0; flex-wrap: wrap; justify-content: center; }
+.fp {
+  background: var(--bg1); border: 1px solid var(--bd2); color: var(--tx3);
+  padding: 7px 16px; border-radius: var(--r2); cursor: pointer;
+  font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 600;
+  transition: all .2s; min-height: 34px; white-space: nowrap;
+}
+.fp:hover { border-color: var(--gd); color: var(--gd); }
+.fp.on { background: var(--gd); border-color: var(--gd); color: #fff; box-shadow: var(--sg); }
+
+/* ================================================================
+   STYLES GRID & CARDS
+================================================================ */
+.grid, .sgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px; padding: 18px 22px 40px;
+}
+.skc {
+  background: var(--sur); border: 1px solid var(--bd);
+  border-radius: var(--r3); padding: 16px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.sc {
+  background: var(--sur); border: 1px solid var(--bd);
+  border-radius: var(--r3); padding: 16px;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+  animation: up .35s ease both;
+}
+.sc:hover { border-color: var(--bd2); box-shadow: var(--s2); transform: translateY(-2px); }
+
+/* Card image */
+.ciw {
+  width: 100%; aspect-ratio: 16/10; background: var(--bg2);
+  border-radius: var(--r2); position: relative; overflow: hidden;
+  margin-bottom: 4px; border: 1px solid var(--bd); flex-shrink: 0;
+}
+.ci-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s; }
+.sc:hover .ci-img { transform: scale(1.03); }
+.cph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--tx3); }
+
+/* Price badge */
+.cpb {
+  position: absolute; bottom: 8px; right: 8px;
+  background: var(--gd); color: #fff; font-size: 12px; font-weight: 700;
+  padding: 4px 10px; border-radius: var(--r1);
+  box-shadow: 0 2px 8px rgba(0,0,0,.3); white-space: nowrap;
+  max-width: calc(100% - 16px); overflow: hidden; text-overflow: ellipsis;
+}
+.ccat { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gd); }
+.cnm { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--tx); line-height: 1.2; }
+.cds { font-size: 12px; color: var(--tx3); line-height: 1.65; flex: 1; }
+
+/* Card footer — KEY: flex-shrink:0 on button prevents squish */
+.cft {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 10px; border-top: 1px solid var(--bd);
+  gap: 8px; min-width: 0;
+}
+.cdr {
+  font-size: 11px; color: var(--tx3); font-weight: 500;
+  white-space: nowrap; flex-shrink: 0;
+}
+
+/* Qty control */
+.qw {
+  display: flex; align-items: center; background: var(--bg2);
+  border: 1px solid var(--bd2); border-radius: var(--r1);
+  overflow: hidden; flex-shrink: 0;
+}
+.qb {
+  background: none; border: none; color: var(--gd);
+  width: 30px; height: 30px; cursor: pointer; font-size: 17px; font-weight: 300;
+  display: flex; align-items: center; justify-content: center; transition: background .15s; flex-shrink: 0;
+}
+.qb:hover { background: var(--gdm); }
+.qb:active { background: var(--gd); color: #fff; }
+.qn { font-size: 13px; font-weight: 700; color: var(--tx); padding: 0 8px; min-width: 22px; text-align: center; white-space: nowrap; }
+
+/* Add button — FIXED: flex-shrink:0 + white-space:nowrap */
+.abtn {
+  flex-shrink: 0; /* CRITICAL — never squish */
+  background: var(--gd); color: #fff; border: none;
+  padding: 7px 12px; border-radius: var(--r1);
+  cursor: pointer; font-family: 'Outfit', sans-serif;
+  font-size: 11px; font-weight: 600;
+  white-space: nowrap; /* CRITICAL — never wrap */
+  min-height: 30px; transition: all .2s; line-height: 1;
+}
+.abtn:hover { background: var(--gd2); }
+.abtn:active { transform: scale(.97); }
+
+/* ================================================================
+   SHARED BUTTONS
+================================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  border: none; padding: 11px 22px; border-radius: var(--r2);
+  font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: all .2s; min-height: 44px; letter-spacing: .2px;
+}
+.btg { background: var(--gd); color: #fff; box-shadow: var(--sg); }
+.btg:hover { background: var(--gd2); transform: translateY(-1px); }
+.btg:active { transform: none; }
+.bto { background: none; border: 1px solid var(--bd2); color: var(--tx); }
+.bto:hover { border-color: var(--gd); color: var(--gd); }
+.bfw { width: 100%; margin-bottom: 8px; }
+.bgh {
+  width: 100%; background: none; border: 1px solid var(--bd2);
+  color: var(--tx3); padding: 10px 16px; border-radius: var(--r2);
+  font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all .2s; min-height: 42px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.bgh:hover { border-color: var(--gd); color: var(--gd); }
+
+/* ================================================================
+   CART PANEL
+================================================================ */
+#ov {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,.6); backdrop-filter: blur(3px); z-index: 400;
+}
+#ov.open { display: block; animation: fi .25s ease; }
+#cp {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: min(410px, 100vw);
+  background: var(--bg1); border-left: 1px solid var(--bd);
+  z-index: 500; display: flex; flex-direction: column;
+  transform: translateX(100%); transition: transform .3s var(--ease);
+  box-shadow: -8px 0 40px rgba(0,0,0,.4);
+}
+#cp.open { transform: translateX(0); }
+
+.ch {
+  padding: 16px 18px 12px; border-bottom: 1px solid var(--bd);
+  display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;
+}
+.cht { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--tx); }
+.chx {
+  background: var(--bg2); border: 1px solid var(--bd2); color: var(--tx2);
+  width: 34px; height: 34px; border-radius: var(--r1); cursor: pointer; font-size: 16px;
+  display: flex; align-items: center; justify-content: center; transition: all .2s;
+}
+.chx:hover { background: var(--bg3); color: var(--tx); }
+
+.pv { display: none; flex-direction: column; flex: 1; overflow: hidden; min-height: 0; }
+.pv.on { display: flex; }
+.ps { flex: 1; overflow-y: auto; padding: 16px 18px; -webkit-overflow-scrolling: touch; }
+.pbk {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: none; border: none; color: var(--tx3);
+  font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 600;
+  cursor: pointer; padding: 2px 0; margin-bottom: 14px; transition: color .2s; min-height: 34px;
+}
+.pbk:hover { color: var(--gd); }
+
+/* Cart items */
+.mty { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; gap: 8px; color: var(--tx3); padding: 32px 16px; text-align: center; }
+.mty-i { font-size: 44px; opacity: .3; }
+.cir { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--bd); align-items: flex-start; }
+.ci-i { width: 52px; height: 44px; object-fit: cover; flex-shrink: 0; border-radius: var(--r1); border: 1px solid var(--bd); }
+.ci-p { width: 52px; height: 44px; flex-shrink: 0; background: var(--bg2); border: 1px solid var(--bd); border-radius: var(--r1); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--tx3); }
+.ci-nm { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; color: var(--tx); line-height: 1.2; }
+.ci-mt { font-size: 11px; color: var(--gd); margin-top: 2px; font-weight: 600; }
+.ci-qr { display: flex; align-items: center; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+.ci-qb { background: var(--bg2); border: 1px solid var(--bd2); color: var(--gd); width: 24px; height: 24px; border-radius: var(--r1); cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: center; transition: all .15s; flex-shrink: 0; }
+.ci-qb:hover { background: var(--gd); color: #fff; border-color: var(--gd); }
+.ci-qn { font-size: 12px; font-weight: 700; color: var(--tx); min-width: 16px; text-align: center; }
+.ci-sb { font-size: 11px; color: var(--tx3); font-weight: 500; }
+.ci-rm { background: none; border: none; color: var(--tx4); cursor: pointer; font-size: 15px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: var(--r1); transition: all .15s; margin-left: auto; flex-shrink: 0; }
+.ci-rm:hover { color: var(--err); background: rgba(192,64,74,.1); }
+
+.cfw { padding: 14px 18px; border-top: 1px solid var(--bd); flex-shrink: 0; }
+.tot { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+.totl { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--tx3); }
+.tota { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 800; color: var(--gd); }
+
+/* ================================================================
+   FORM ELEMENTS
+================================================================ */
+.fl { margin-bottom: 14px; }
+.fl label { display: block; font-size: 11px; font-weight: 600; letter-spacing: .8px; text-transform: uppercase; color: var(--tx3); margin-bottom: 6px; }
+.fl input, .fl textarea, .fl select {
+  width: 100%; background: var(--bg2); border: 1px solid var(--bd2);
+  color: var(--tx); padding: 11px 14px; border-radius: var(--r2);
+  font-family: 'Outfit', sans-serif; font-size: 14px; outline: none;
+  transition: border-color .2s; -webkit-appearance: none;
+}
+.fl input:focus, .fl textarea:focus, .fl select:focus { border-color: var(--gd); }
+.fl input::placeholder, .fl textarea::placeholder { color: var(--tx4); }
+
+.pmth { display: flex; gap: 8px; margin-bottom: 14px; }
+.pm { flex: 1; padding: 9px 6px; border: 1px solid var(--bd2); text-align: center; font-size: 12px; font-weight: 600; color: var(--tx3); cursor: pointer; transition: all .2s; border-radius: var(--r2); min-height: 40px; display: flex; align-items: center; justify-content: center; }
+.pm:hover { border-color: var(--gd); color: var(--gd); }
+.pm.sl { background: var(--gd); border-color: var(--gd); color: #fff; box-shadow: var(--sg); }
+
+.bkb { background: var(--bg2); border: 1px solid var(--bd2); border-radius: var(--r2); padding: 14px; margin-bottom: 14px; position: relative; overflow: hidden; }
+.bkb::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--gd), var(--gd2)); }
+.bktg { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; color: var(--tx3); text-transform: uppercase; margin-bottom: 8px; }
+.bkac { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 800; color: var(--gd); letter-spacing: 3px; }
+.bknm { font-size: 13px; color: var(--tx); margin-top: 4px; font-weight: 600; }
+.bkbk { font-size: 11px; color: var(--tx3); margin-top: 2px; }
+.bknt { font-size: 11px; color: var(--tx3); margin-top: 10px; line-height: 1.6; padding-top: 8px; border-top: 1px solid var(--bd); }
+
+.upz { border: 1.5px dashed var(--bd2); border-radius: var(--r2); padding: 18px; text-align: center; cursor: pointer; transition: all .2s; margin-bottom: 14px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.upz:hover { border-color: var(--gd); background: var(--gdm); }
+.upz p { font-size: 12px; color: var(--tx3); font-weight: 500; }
+.rb { background: var(--bg2); border: 1px solid var(--bd2); border-radius: var(--r2); padding: 10px 12px; display: none; align-items: center; gap: 10px; margin-bottom: 14px; }
+.rt { width: 44px; height: 38px; object-fit: cover; border-radius: var(--r1); border: 1px solid var(--bd); }
+.rfn { font-size: 12px; color: var(--gd); font-weight: 600; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rsz { font-size: 11px; color: var(--tx3); margin-top: 1px; }
+.rrm { background: none; border: none; color: var(--tx4); cursor: pointer; font-size: 16px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; border-radius: var(--r1); transition: all .15s; flex-shrink: 0; }
+.rrm:hover { color: var(--err); }
+
+/* ================================================================
+   CHAT — text ALWAYS wraps inside bubble radius
+================================================================ */
+.live-d { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); margin-right: 5px; animation: pu 1.5s infinite; }
+.chint {
+  background: var(--gdm); border-left: 2px solid var(--gd);
+  padding: 10px 14px; font-size: 12px; color: var(--tx2); line-height: 1.6;
+  margin: 0 18px 12px; border-radius: 0 var(--r1) var(--r1) 0;
+  flex-shrink: 0;
+  /* prevent overflow */
+  overflow: hidden; word-break: break-word; overflow-wrap: break-word;
+}
+.msgs { flex: 1; overflow-y: auto; padding: 12px 18px; display: flex; flex-direction: column; gap: 10px; -webkit-overflow-scrolling: touch; }
+.msg { display: flex; gap: 6px; animation: up .2s ease; }
+.msg.usr { flex-direction: row-reverse; }
+
+/* Bubble — text wraps inside, never overflows rounded corners */
+.bbl {
+  max-width: 78%; padding: 9px 13px; border-radius: var(--r2);
+  font-size: 13px; line-height: 1.6;
+  word-wrap: break-word;        /* legacy support */
+  overflow-wrap: break-word;    /* modern */
+  word-break: break-word;       /* aggressively wrap */
+  min-width: 0;
+}
+.msg.own .bbl { background: var(--bg2); border: 1px solid var(--bd); color: var(--tx); border-radius: var(--r1) var(--r2) var(--r2) var(--r2); }
+.msg.usr .bbl { background: var(--gd); color: #fff; font-weight: 500; border-radius: var(--r2) var(--r1) var(--r2) var(--r2); }
+.msgt { font-size: 10px; color: var(--tx3); margin-top: 3px; }
+.msg.usr .msgt { text-align: right; }
+.rimp { width: 100%; max-width: 180px; border-radius: var(--r1); margin-top: 6px; display: block; border: 1px solid var(--bd); }
+
+.tyd { display: flex; gap: 4px; padding: 5px 4px; align-items: center; }
+.dot { width: 5px; height: 5px; border-radius: 50%; background: var(--tx3); animation: pu 1.2s infinite; }
+.dot:nth-child(2) { animation-delay: .2s; }
+.dot:nth-child(3) { animation-delay: .4s; }
+
+.cbar { display: flex; gap: 7px; padding: 10px 18px; border-top: 1px solid var(--bd); align-items: flex-end; flex-shrink: 0; }
+.ci2 { flex: 1; background: var(--bg2); border: 1px solid var(--bd2); color: var(--tx); padding: 9px 12px; border-radius: var(--r2); font-family: 'Outfit', sans-serif; font-size: 13px; outline: none; resize: none; max-height: 80px; line-height: 1.5; -webkit-appearance: none; transition: border-color .2s; }
+.ci2:focus { border-color: var(--gd); }
+.ci2::placeholder { color: var(--tx4); }
+.atb { background: var(--bg2); border: 1px solid var(--bd2); color: var(--tx3); width: 38px; height: 38px; border-radius: var(--r2); cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: center; transition: all .2s; flex-shrink: 0; }
+.atb:hover { border-color: var(--gd); color: var(--gd); }
+.sndb { background: var(--gd); color: #fff; border: none; width: 38px; height: 38px; border-radius: var(--r2); cursor: pointer; font-size: 15px; display: flex; align-items: center; justify-content: center; transition: all .2s; flex-shrink: 0; box-shadow: var(--sg); }
+.sndb:hover { background: var(--gd2); }
+.sndb:active { transform: scale(.93); }
+
+/* ================================================================
+   SUCCESS VIEW
+================================================================ */
+.sucv { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px 20px; text-align: center; overflow-y: auto; }
+.sico { width: 72px; height: 72px; background: var(--gd); border-radius: var(--r3); display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 16px; box-shadow: var(--sg); animation: bob 2.5s ease infinite; }
+.sh2 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: var(--tx); margin-bottom: 6px; }
+.ss2 { font-size: 13px; color: var(--tx3); line-height: 1.7; margin-bottom: 12px; }
+.srf { font-family: monospace; background: var(--bg2); border: 1px solid var(--bd2); padding: 8px 18px; border-radius: var(--r2); font-size: 13px; font-weight: 700; color: var(--gd); letter-spacing: 2px; display: inline-block; margin: 0 auto 12px; }
+.ssha { font-family: 'Playfair Display', serif; font-style: italic; color: var(--gd); font-size: 18px; font-weight: 700; margin: 12px 0 4px; }
+.ssig { font-size: 11px; color: var(--tx3); font-weight: 500; }
+
+/* ================================================================
+   ABOUT PAGE
+================================================================ */
+.abw { max-width: 800px; margin: 0 auto; padding: 52px 22px; }
+.absh { background: var(--sur); border: 1px solid var(--bd2); border-radius: var(--r4); padding: 34px 28px; text-align: center; margin-bottom: 44px; position: relative; overflow: hidden; }
+.absh::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gd), transparent); }
+.shl { font-size: 10px; font-weight: 600; letter-spacing: 3px; color: var(--gd); text-transform: uppercase; margin-bottom: 12px; }
+.shbg { font-family: 'Playfair Display', serif; font-size: clamp(34px, 6vw, 54px); font-style: italic; font-weight: 800; color: var(--gd); margin-bottom: 14px; line-height: 1; }
+.shbd { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(14px, 2vw, 15.5px); color: var(--tx2); line-height: 2; max-width: 560px; margin: 0 auto; }
+.shsg { font-size: 10px; letter-spacing: 3px; color: var(--tx3); text-transform: uppercase; margin-top: 16px; font-weight: 600; }
+.abs { margin-bottom: 36px; }
+.abs h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--tx); margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--bd); display: flex; align-items: center; gap: 8px; }
+.abs h3 .ic { color: var(--gd); font-size: 13px; }
+.abs p { font-size: 14px; color: var(--tx3); line-height: 1.85; }
+.vals { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 10px; margin-top: 14px; }
+.vl { background: var(--sur); border: 1px solid var(--bd); border-radius: var(--r3); padding: 18px 14px; text-align: center; transition: all .2s; }
+.vl:hover { border-color: var(--bd2); box-shadow: var(--s1); }
+.vi { font-size: 20px; margin-bottom: 8px; }
+.vt { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--gd); text-transform: uppercase; margin-bottom: 5px; }
+.vd { font-size: 12px; color: var(--tx3); line-height: 1.55; }
+.cts { display: grid; grid-template-columns: repeat(auto-fill, minmax(172px, 1fr)); gap: 10px; margin-top: 14px; }
+.ct { background: var(--sur); border: 1px solid var(--bd); border-radius: var(--r2); padding: 14px; transition: all .2s; }
+.ct:hover { border-color: var(--bd2); }
+.ctl { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; color: var(--tx3); text-transform: uppercase; margin-bottom: 5px; }
+.ctv { font-size: 13px; color: var(--gd); font-weight: 600; word-break: break-all; }
+
+/* ================================================================
+   OWNER DASHBOARD
+================================================================ */
+.oww { max-width: 700px; margin: 0 auto; padding: 40px 22px; }
+.owc { background: var(--sur); border: 1px solid var(--bd); border-radius: var(--r3); padding: 22px; margin-bottom: 14px; }
+.owc h3 { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--gd); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--bd); }
+.owd { font-size: 13px; color: var(--tx3); line-height: 1.8; margin-bottom: 14px; }
+.of { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.of input, .of select, .of textarea { background: var(--bg2); border: 1px solid var(--bd2); color: var(--tx); padding: 10px 13px; border-radius: var(--r2); font-family: 'Outfit', sans-serif; font-size: 13px; outline: none; transition: all .2s; width: 100%; -webkit-appearance: none; }
+.of input:focus, .of select:focus, .of textarea:focus { border-color: var(--gd); }
+.of input::placeholder { color: var(--tx4); }
+.of .fw { grid-column: 1/-1; }
+.of textarea { resize: vertical; min-height: 64px; }
+.osv { grid-column: 1/-1; width: 100%; background: var(--gd); color: #fff; border: none; padding: 13px; border-radius: var(--r2); font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: all .2s; box-shadow: var(--sg); min-height: 46px; }
+.osv:hover { background: var(--gd2); transform: translateY(-1px); }
+.igz { grid-column: 1/-1; border: 1.5px dashed var(--bd2); border-radius: var(--r2); padding: 14px; text-align: center; cursor: pointer; transition: all .2s; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.igz:hover { border-color: var(--gd); background: var(--gdm); }
+.igz p { font-size: 11px; color: var(--tx3); font-weight: 500; }
+.ipv { grid-column: 1/-1; position: relative; display: none; border-radius: var(--r2); overflow: hidden; }
+.ipv img { width: 100%; height: 110px; object-fit: cover; display: block; }
+.ipv-rm { position: absolute; top: 6px; right: 6px; background: rgba(0,0,0,.65); color: #fff; border: none; width: 26px; height: 26px; border-radius: 50%; cursor: pointer; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.owr { display: grid; grid-template-columns: auto 1fr auto auto auto; gap: 8px; align-items: center; background: var(--bg2); border: 1px solid var(--bd); border-radius: var(--r2); padding: 10px 12px; margin-bottom: 6px; transition: border-color .2s; }
+.owr:hover { border-color: var(--bd2); }
+.oth { width: 42px; height: 36px; border-radius: var(--r1); background: var(--bg3); border: 1px solid var(--bd); display: flex; align-items: center; justify-content: center; font-size: 15px; color: var(--tx3); overflow: hidden; flex-shrink: 0; }
+.oth img { width: 100%; height: 100%; object-fit: cover; }
+.onm { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; color: var(--tx); }
+.ome { font-size: 10px; color: var(--tx3); margin-top: 1px; }
+.opr { font-size: 13px; color: var(--gd); font-weight: 700; white-space: nowrap; }
+.eb, .db { background: var(--bg3); border: 1px solid var(--bd2); color: var(--tx3); padding: 5px 10px; border-radius: var(--r1); cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 600; transition: all .2s; min-height: 28px; white-space: nowrap; }
+.eb:hover { border-color: var(--gd); color: var(--gd); }
+.db:hover { border-color: var(--err); color: var(--err); }
+
+/* OTP inputs */
+.otpi { display: flex; gap: 7px; justify-content: center; margin: 14px 0 10px; }
+.otpi input { width: 42px; height: 50px; text-align: center; background: var(--bg2); border: 1px solid var(--bd2); color: var(--gd); font-size: 19px; font-weight: 700; border-radius: var(--r2); outline: none; -webkit-appearance: none; transition: border-color .2s; font-family: 'Outfit', sans-serif; }
+.otpi input:focus { border-color: var(--gd); }
+
+/* Status boxes */
+.sb { padding: 10px 14px; border-radius: var(--r2); font-size: 12px; line-height: 1.65; margin: 8px 0; font-weight: 500; border-left: 3px solid; word-break: break-word; overflow-wrap: break-word; }
+.ok2 { background: rgba(74,152,112,.1); color: var(--ok); border-color: var(--ok); }
+.er2 { background: rgba(192,64,74,.1); color: var(--err); border-color: var(--err); }
+.in2 { background: var(--bg2); color: var(--tx3); border-color: var(--bd2); }
+.sp2 { width: 13px; height: 13px; border: 2px solid rgba(255,255,255,.25); border-top-color: #fff; border-radius: 50%; animation: sp .7s linear infinite; display: inline-block; vertical-align: middle; margin-right: 5px; }
+
+/* Owner messages */
+.msl { display: flex; flex-direction: column; gap: 8px; max-height: 340px; overflow-y: auto; }
+.om { background: var(--bg2); border: 1px solid var(--bd); border-radius: var(--r2); padding: 12px; }
+.om.ur { border-left: 3px solid var(--gd); }
+.om-h { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 6px; flex-wrap: wrap; }
+.om-f { font-size: 11px; color: var(--gd); font-weight: 700; }
+.om-t { font-size: 10px; color: var(--tx3); }
+.om-b { font-size: 12px; color: var(--tx2); line-height: 1.6; word-break: break-word; }
+.om-i { width: 100%; max-width: 150px; border-radius: var(--r1); margin-top: 7px; display: block; border: 1px solid var(--bd); }
+.rr { display: flex; gap: 6px; margin-top: 8px; }
+.rr input { flex: 1; background: var(--bg3); border: 1px solid var(--bd2); color: var(--tx); padding: 7px 11px; border-radius: var(--r2); font-family: 'Outfit', sans-serif; font-size: 12px; outline: none; -webkit-appearance: none; transition: border-color .2s; }
+.rr input:focus { border-color: var(--gd); }
+.rrs { background: var(--gd); color: #fff; border: none; padding: 7px 12px; border-radius: var(--r2); cursor: pointer; font-size: 11px; font-weight: 600; transition: all .2s; white-space: nowrap; }
+.rrs:hover { background: var(--gd2); }
+.nom { text-align: center; color: var(--tx3); padding: 20px; font-size: 13px; }
+.ubg { display: none; background: var(--gd); color: #fff; font-size: 10px; padding: 1px 7px; border-radius: var(--r1); margin-left: 6px; font-weight: 700; }
+.pinf { display: flex; flex-direction: column; gap: 9px; }
+.pinf input { background: var(--bg2); border: 1px solid var(--bd2); color: var(--tx); padding: 11px 13px; border-radius: var(--r2); font-family: 'Outfit', sans-serif; font-size: 14px; outline: none; transition: all .2s; -webkit-appearance: none; }
+.pinf input:focus { border-color: var(--gd); }
+.pmsg { font-size: 12px; text-align: center; font-weight: 600; min-height: 17px; margin-top: 4px; }
+
+/* ================================================================
+   FOOTER
+================================================================ */
+footer { border-top: 1px solid var(--bd); padding: 44px 22px 36px; text-align: center; background: var(--bg1); transition: background .3s; }
+.ftl { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 800; color: var(--gd); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+.fts { font-family: 'Playfair Display', serif; font-style: italic; color: var(--tx3); font-size: 14px; margin-bottom: 22px; }
+.ftlks { display: flex; gap: 7px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.ftb { background: var(--bg2); border: 1px solid var(--bd2); color: var(--tx3); padding: 7px 16px; border-radius: var(--r2); cursor: pointer; font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 600; transition: all .2s; min-height: 34px; white-space: nowrap; }
+.ftb:hover { border-color: var(--gd); color: var(--gd); }
+.ftc { font-size: 11px; color: var(--tx4); letter-spacing: .3px; }
+
+/* ================================================================
+   RESPONSIVE — All breakpoints
+================================================================ */
+/* 320px tiny phones */
+@media (max-width: 340px) {
+  .brand-s { display: none; }
+  .hero { padding: 36px 14px; }
+  .hh { font-size: 30px; }
+  .grid, .sgrid { grid-template-columns: 1fr; padding: 12px 14px; }
+  .flts { padding: 18px 14px 0; gap: 5px; }
+  .fp { padding: 6px 12px; font-size: 11px; }
+  .abw, .oww { padding: 36px 12px; }
+  .of { grid-template-columns: 1fr; }
+  .otpi input { width: 36px; height: 44px; }
+  .otpi { gap: 5px; }
+  #cp { width: 100vw; }
+}
+/* Small phones ≤480px */
+@media (max-width: 480px) {
+  :root { --nav: 58px; }
+  .nav { padding: 0 12px; gap: 6px; }
+  .brand-n { font-size: 13px; letter-spacing: 1.5px; }
+  .hero { padding: 40px 16px; }
+  .shq { padding: 18px 16px; }
+  .grid, .sgrid { grid-template-columns: 1fr; gap: 10px; padding: 14px 16px 30px; }
+  .sec { padding: 44px 14px 0; }
+  .flts { padding: 18px 14px 0; gap: 5px; }
+  .abw, .oww { padding: 40px 14px; }
+  .absh { padding: 26px 16px; }
+  .shbg { font-size: 38px; }
+  .vals, .cts { grid-template-columns: 1fr 1fr; }
+  #cp { width: 100vw; }
+  .of { grid-template-columns: 1fr; }
+  .hcta .btn { padding: 10px 18px; font-size: 12px; }
+  .cdr { font-size: 10px; }
+  .abtn { padding: 6px 10px; font-size: 11px; }
+}
+/* Medium phones 481–640px */
+@media (min-width: 481px) and (max-width: 640px) {
+  .grid, .sgrid { grid-template-columns: repeat(2, 1fr); }
+  #cp { width: min(100vw, 380px); }
+}
+/* Tablets portrait 641–900px */
+@media (min-width: 641px) and (max-width: 900px) {
+  .grid, .sgrid { grid-template-columns: repeat(2, 1fr); }
+  #cp { width: min(420px, 90vw); }
+}
+/* Small desktop 901–1280px */
+@media (min-width: 901px) and (max-width: 1280px) {
+  .grid, .sgrid { grid-template-columns: repeat(3, 1fr); }
+}
+/* Full HD 1281–1600px */
+@media (min-width: 1281px) and (max-width: 1600px) {
+  .grid, .sgrid { grid-template-columns: repeat(4, 1fr); }
+  .abw, .oww { max-width: 860px; }
+}
+/* Ultra wide 1601px+ */
+@media (min-width: 1601px) {
+  :root { --nav: 70px; }
+  .nav { padding: 0 48px; }
+  .grid, .sgrid { grid-template-columns: repeat(5, 1fr); padding: 20px 48px 48px; }
+  .sec { padding: 64px 48px 0; }
+  .flts { padding: 26px 48px 0; }
+  .hero { padding: 80px 48px; }
+  .abw, .oww { max-width: 960px; }
+  footer { padding: 56px 48px 44px; }
+}
+/* Landscape phones */
+@media (max-height: 480px) and (orientation: landscape) {
+  .hero { min-height: auto; padding: 28px 22px; }
+  .shq { display: none; }
+  .hp { margin-bottom: 20px; }
+  #cp { width: 65vw; min-width: 300px; }
+}
+/* Safe areas (notch phones) */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .cfw, footer { padding-bottom: max(14px, env(safe-area-inset-bottom)); }
+  .cbar { padding-bottom: max(10px, env(safe-area-inset-bottom)); }
+}
+/* Touch: suppress hover jank */
+@media (hover: none) {
+  .sc:hover { transform: none; box-shadow: none; }
+  .btg:hover { transform: none; }
+  .abtn:hover { background: var(--gd); }
+}
+</style>
+</head>
+<body>
+
+<div id="toast" role="alert"></div>
+<input type="file" id="rfi" accept="image/*" style="display:none" onchange="onRcpt(event)"/>
+<input type="file" id="ini" accept="image/*" style="display:none" onchange="onSImg(event,'n')"/>
+<input type="file" id="iei" accept="image/*" style="display:none" onchange="onSImg(event,'e')"/>
+
+<div id="app">
+
+<!-- ════════════════════ CART PANEL ════════════════════ -->
+<div id="ov" onclick="closeCart()"></div>
+<div id="cp">
+
+  <!-- VIEW: Cart -->
+  <div id="vC" class="pv on" style="flex-direction:column">
+    <div class="ch">
+      <div class="cht">Your Session</div>
+      <button class="chx" onclick="closeCart()">✕</button>
+    </div>
+    <div class="ps" id="cList"></div>
+    <div class="cfw">
+      <div class="tot">
+        <span class="totl">Total</span>
+        <span class="tota" id="cTot">₦0</span>
+      </div>
+      <button class="btn btg bfw" onclick="goV('vK')">Proceed to Payment →</button>
+      <button class="bgh" onclick="goV('vH')">💬 Message the Studio</button>
+    </div>
+  </div>
+
+  <!-- VIEW: Checkout -->
+  <div id="vK" class="pv">
+    <div class="ps">
+      <button class="pbk" onclick="goV('vC')">← Back to cart</button>
+      <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--tx);margin-bottom:16px">Payment Details</div>
+      <div class="fl"><label>Full Name</label><input type="text" id="pn" placeholder="Your full name" autocomplete="name"/></div>
+      <div class="fl"><label>Phone</label><input type="tel" id="pp" placeholder="+234 915 527 9735" autocomplete="tel"/></div>
+      <div class="fl"><label>Payment Method</label>
+        <div class="pmth">
+          <div class="pm sl" onclick="selM(this,'a')">Access Bank</div>
+          <div class="pm" onclick="selM(this,'o')">OPay</div>
+        </div>
+      </div>
+      <div id="bA" class="bkb">
+        <div class="bktg">Transfer to</div>
+        <div class="bkac">1531702232</div>
+        <div class="bknm">Godswill Uduak Usen</div>
+        <div class="bkbk">Access Bank Nigeria</div>
+        <div class="bknt">Use your name as reference. Send receipt via chat to confirm your booking.</div>
+      </div>
+      <div id="bO" class="bkb" style="display:none">
+        <div class="bktg">Transfer to</div>
+        <div class="bkac">9155279735</div>
+        <div class="bknm">Godswill Uduak Usen</div>
+        <div class="bkbk">OPay</div>
+        <div class="bknt">Use your name as reference. Send receipt via chat to confirm your booking.</div>
+      </div>
+      <div class="fl"><label>Attach Receipt</label>
+        <div class="upz" onclick="document.getElementById('rfi').click()">
+          <div style="font-size:22px">📄</div>
+          <p>Tap to upload receipt photo</p>
+        </div>
+        <div class="rb" id="rBar">
+          <img class="rt" id="rTh" src="" alt="receipt"/>
+          <div style="flex:1;min-width:0">
+            <div class="rfn" id="rFn"></div>
+            <div class="rsz" id="rSz"></div>
+          </div>
+          <button class="rrm" onclick="clRcpt()">×</button>
+        </div>
+      </div>
+      <div class="tot" style="margin-bottom:6px">
+        <span class="totl">Amount Due</span>
+        <span class="tota" id="dTot">₦0</span>
+      </div>
+    </div>
+    <div style="padding:0 18px 18px">
+      <button class="btn btg bfw" onclick="confPay()">Confirm &amp; Book Session</button>
+      <button class="bgh" onclick="goV('vH')">Send Receipt via Chat →</button>
+    </div>
+  </div>
+
+  <!-- VIEW: Chat -->
+  <div id="vH" class="pv">
+    <div class="ch">
+      <div>
+        <div class="cht"><span class="live-d"></span>Studio Chat</div>
+        <div style="font-size:11px;color:var(--tx3);margin-top:1px">Enigma Alpha · Live Support</div>
+      </div>
+      <button class="chx" onclick="goV('vC')">←</button>
+    </div>
+    <div class="chint">Send your payment receipt and chat directly with the studio. Shalom ✦</div>
+    <div class="msgs" id="msgs"></div>
+    <div class="cbar">
+      <textarea class="ci2" id="ci2" rows="1" placeholder="Type a message…" onkeydown="chatEnter(event)"></textarea>
+      <button class="atb" onclick="document.getElementById('rfi').click()" title="Attach receipt">📎</button>
+      <button class="sndb" onclick="sendMsg()">➤</button>
+    </div>
+  </div>
+
+  <!-- VIEW: Success -->
+  <div id="vS" class="pv">
+    <div class="sucv">
+      <div class="sico">✦</div>
+      <div class="sh2">Booking Confirmed!</div>
+      <div class="ss2">Present this reference at the studio.</div>
+      <div class="srf" id="sRef">EA-XXXXXX</div>
+      <div class="ss2">Send your receipt via <strong style="color:var(--gd)">Studio Chat</strong> to verify.</div>
+      <div class="ssha">Shalom — Peace be with you</div>
+      <div class="ssig">— Godswill Uduak Usen, Founder</div>
+      <button class="btn btg" style="margin-top:20px" onclick="goV('vH')">Open Studio Chat →</button>
+      <button class="btn bto" style="margin-top:8px" onclick="rstAll()">Book Another Style</button>
+    </div>
+  </div>
+
+</div><!-- end #cp -->
+
+<!-- ════════════════════ NAVIGATION ════════════════════ -->
+<nav class="nav" id="mn">
+  <div class="brand" onclick="spg('home')">
+    <div class="brand-n">Enigma Alpha</div>
+    <div class="brand-s">Barber Studio</div>
+  </div>
+
+  <!-- Desktop links: visible ≥768px -->
+  <div class="dnav" id="dn">
+    <button class="dnl on" id="dH" onclick="spg('home')">Menu</button>
+    <button class="dnl" id="dA" onclick="spg('about')">About</button>
+    <button class="dnl" id="dO" onclick="spg('owner')">Owner</button>
+  </div>
+
+  <div class="nav-spacer"></div>
+
+  <div class="nav-act">
+    <button class="tbtn" onclick="togTheme()" id="tb" title="Toggle theme">☀</button>
+    <button class="cart-btn" onclick="openCart()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </svg>
+      <span class="cart-lbl">Cart</span>
+      <span class="cart-n" id="cc">0</span>
+    </button>
+    <!-- Hamburger: only visible <768px — contains Menu/About/Owner links -->
+    <button class="ham" id="ham" onclick="togMob()" aria-label="Open navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile dropdown: Menu + About + Owner + Theme -->
+<div class="mobm" id="mobm">
+  <button class="mnl on" id="mH" onclick="spg('home');clMob()">Menu</button>
+  <button class="mnl" id="mA" onclick="spg('about');clMob()">About</button>
+  <button class="mnl" id="mO" onclick="spg('owner');clMob()">Owner</button>
+  <button class="mnl" onclick="togTheme();clMob()">☀ Theme</button>
+</div>
+
+<div class="grule"></div>
+
+<!-- ════════════════════ HOME PAGE ════════════════════ -->
+<div id="homePage" class="page active">
+  <div class="hero">
+    <div class="hchip">✦ Est. 2020 · Precision &amp; Elegance</div>
+    <h1 class="hh">The Art of the<br><em>Perfect Cut.</em></h1>
+    <p class="hp">Where every blade stroke is a masterpiece and every client leaves transformed.</p>
+    <div class="shq">
+      <p>Peace flows through every cut we make. You walk in a patron — you walk out transformed. Shalom to every soul that graces this chair. May your confidence be renewed and your excellence shine.</p>
+      <cite>— Godswill Uduak Usen, Founder</cite>
+    </div>
+    <div class="hcta">
+      <button class="btn btg" onclick="document.getElementById('sty').scrollIntoView({behavior:'smooth'})">Browse Styles ↓</button>
+      <button class="btn bto" onclick="spg('about')">Our Story</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stn">500+</div><div class="stl">Happy Clients</div></div>
+    <div class="stat"><div class="stn">5+</div><div class="stl">Years</div></div>
+    <div class="stat"><div class="stn">12+</div><div class="stl">Styles</div></div>
+  </div>
+
+  <div id="sty">
+    <div class="sec">
+      <div class="schip">Our Services</div>
+      <h2 class="sh">Choose Your Style</h2>
+      <p class="ss">Tap any style to add it to your session</p>
+    </div>
+    <div class="flts">
+      <button class="fp on" onclick="fltG('all',this)">All Styles</button>
+      <button class="fp" onclick="fltG('classic',this)">Classic</button>
+      <button class="fp" onclick="fltG('modern',this)">Modern</button>
+      <button class="fp" onclick="fltG('beard',this)">Beard</button>
+      <button class="fp" onclick="fltG('kids',this)">Kids</button>
+    </div>
+    <div id="sg" class="sgrid"></div>
+    <div id="gg" class="grid" style="display:none"></div>
+  </div>
+
+  <footer>
+    <div class="ftl">Enigma Alpha</div>
+    <div class="fts">"Shalom — Peace, Excellence, Transformation"</div>
+    <div class="ftlks">
+      <button class="ftb" onclick="spg('home')">Menu</button>
+      <button class="ftb" onclick="spg('about')">About</button>
+      <button class="ftb" onclick="openCart()">Book Now</button>
+      <button class="ftb" onclick="openCart();setTimeout(()=>goV('vH'),80)">Chat</button>
+    </div>
+    <div class="ftc">© 2025 Enigma Alpha Barber Studio · All rights reserved</div>
+  </footer>
+</div>
+
+<!-- ════════════════════ ABOUT PAGE ════════════════════ -->
+<div id="aboutPage" class="page">
+  <div class="abw">
+    <div class="absh">
+      <div class="shl">✦ A Word from the Founder ✦</div>
+      <div class="shbg">Shalom</div>
+      <div class="shbd">Peace be upon every person who walks through our doors. At Enigma Alpha Barber Studio, we do not merely cut hair — we craft confidence, restore dignity, and pour excellence into every stroke of the blade. You are a guest in our sanctuary. Shalom — may peace, wholeness, and prosperity follow you always.</div>
+      <div class="shsg">— Godswill Uduak Usen · Founder &amp; Master Barber</div>
+    </div>
+    <div class="abs">
+      <h3><span class="ic">✦</span>Who We Are</h3>
+      <p>Enigma Alpha Barber Studio was born from a singular vision — to create a space where grooming meets artistry and every client is treated like royalty. We combine traditional craft with modern precision to deliver results that speak for themselves.</p>
+    </div>
+    <div class="abs">
+      <h3><span class="ic">♦</span>Our Values</h3>
+      <div class="vals">
+        <div class="vl"><div class="vi">✦</div><div class="vt">Excellence</div><div class="vd">Nothing less than perfection in every cut.</div></div>
+        <div class="vl"><div class="vi">♦</div><div class="vt">Integrity</div><div class="vd">Honest pricing. Honest service.</div></div>
+        <div class="vl"><div class="vi">✿</div><div class="vt">Warmth</div><div class="vd">Every client welcomed like family.</div></div>
+        <div class="vl"><div class="vi">◈</div><div class="vt">Precision</div><div class="vd">Blade-sharp accuracy in every line.</div></div>
+      </div>
+    </div>
+    <div class="abs">
+      <h3><span class="ic">◈</span>Contact Us</h3>
+      <div class="cts">
+        <div class="ct"><div class="ctl">WhatsApp</div><div class="ctv">09155279735</div></div>
+        <div class="ct"><div class="ctl">Email</div><div class="ctv" style="font-size:11px">godswillusen157@gmail.com</div></div>
+        <div class="ct"><div class="ctl">Access Bank</div><div class="ctv">1531702232</div></div>
+        <div class="ct"><div class="ctl">OPay</div><div class="ctv">9155279735</div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:36px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn btg" onclick="spg('home')">← Back to Home</button>
+      <button class="btn bto" onclick="openCart()">Book a Style</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ OWNER PAGE ════════════════════ -->
+<div id="ownerPage" class="page">
+  <div class="oww">
+    <div style="text-align:center;margin-bottom:28px">
+      <div class="schip">Secured</div>
+      <h2 class="sh" style="margin-top:10px">Owner Dashboard</h2>
+    </div>
+
+    <!-- Login step -->
+    <div id="ls" class="owc">
+      <h3>Email Verification</h3>
+      <div id="es">
+        <p class="owd">Enter your registered owner email. A 6-digit OTP will be sent to your Gmail inbox instantly via EmailJS.</p>
+        <div class="fl"><label>Owner Email</label><input type="email" id="oe" placeholder="godswillusen157@gmail.com" onkeydown="if(event.key==='Enter')reqOTP()"/></div>
+        <button class="btn btg" id="ob" style="width:100%" onclick="reqOTP()">Send OTP to My Email →</button>
+        <div id="es2"></div>
+      </div>
+      <div id="os" style="display:none">
+        <p class="owd" style="text-align:center">Enter the 6-digit code sent to<br><strong style="color:var(--gd)">godswillusen157@gmail.com</strong></p>
+        <div class="otpi">
+          <input type="text" maxlength="1" id="o1" oninput="oNxt(this,'o2')" inputmode="numeric"/>
+          <input type="text" maxlength="1" id="o2" oninput="oNxt(this,'o3')" inputmode="numeric"/>
+          <input type="text" maxlength="1" id="o3" oninput="oNxt(this,'o4')" inputmode="numeric"/>
+          <input type="text" maxlength="1" id="o4" oninput="oNxt(this,'o5')" inputmode="numeric"/>
+          <input type="text" maxlength="1" id="o5" oninput="oNxt(this,'o6')" inputmode="numeric"/>
+          <input type="text" maxlength="1" id="o6" oninput="oLst()" inputmode="numeric"/>
+        </div>
+        <div id="os2"></div>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <button class="btn btg" style="flex:1" onclick="verOTP()">Verify &amp; Enter →</button>
+          <button class="btn bto" onclick="bkEm()">Resend</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard (shown after OTP verified) -->
+    <div id="od" style="display:none">
+
+      <div class="owc">
+        <h3>Security — Change PIN</h3>
+        <p class="owd">Only <strong style="color:var(--gd)">godswillusen157@gmail.com</strong> can access this dashboard. You alone control this PIN.</p>
+        <div class="pinf">
+          <input type="password" id="np1" placeholder="New 4-digit PIN" maxlength="4" inputmode="numeric"/>
+          <input type="password" id="np2" placeholder="Confirm new PIN" maxlength="4" inputmode="numeric"/>
+          <button class="btn btg" onclick="chgPin()" style="width:100%">Update PIN</button>
+        </div>
+        <div id="pm2" class="pmsg"></div>
+      </div>
+
+      <div class="owc">
+        <h3>Customer Messages <span class="ubg" id="ubg">0 new</span></h3>
+        <div class="msl" id="omsg"><div class="nom">No messages yet. Customer chats appear here.</div></div>
+      </div>
+
+      <div class="owc">
+        <h3>Add New Style</h3>
+        <div class="of">
+          <input type="text" id="nN" placeholder="Style name e.g. Caesar Cut"/>
+          <input type="number" id="nP" placeholder="Price in ₦" inputmode="numeric"/>
+          <select id="nC">
+            <option value="classic">Classic</option>
+            <option value="modern">Modern</option>
+            <option value="beard">Beard &amp; Groom</option>
+            <option value="kids">Kids</option>
+          </select>
+          <input type="text" id="nD" placeholder="Duration e.g. 30 min"/>
+          <textarea id="nDs" class="fw" placeholder="Short description of this style…"></textarea>
+          <input type="text" id="nI" placeholder="Icon e.g. ✦ ✂ ◈ ★"/>
+          <div class="igz fw" onclick="document.getElementById('ini').click()">
+            <div style="font-size:20px">🖼</div>
+            <p>Tap to upload style photo</p>
+          </div>
+          <div class="ipv fw" id="niPv">
+            <img id="niEl" src="" alt="style preview"/>
+            <button class="ipv-rm" onclick="clNI()">×</button>
+          </div>
+          <button class="osv" onclick="addS()">+ Add Style to Menu</button>
+        </div>
+      </div>
+
+      <div class="owc">
+        <h3>Edit Existing Styles</h3>
+        <div id="owL"></div>
+      </div>
+
+      <div id="ew" class="owc" style="display:none">
+        <h3 id="eT">Edit Style</h3>
+        <div class="of">
+          <input type="hidden" id="eId"/>
+          <input type="text" id="eN" placeholder="Style name"/>
+          <input type="number" id="eP" placeholder="Price in ₦" inputmode="numeric"/>
+          <select id="eC">
+            <option value="classic">Classic</option>
+            <option value="modern">Modern</option>
+            <option value="beard">Beard</option>
+            <option value="kids">Kids</option>
+          </select>
+          <input type="text" id="eD" placeholder="Duration"/>
+          <textarea id="eDs" class="fw"></textarea>
+          <input type="text" id="eI" placeholder="Icon"/>
+          <div class="igz fw" onclick="document.getElementById('iei').click()">
+            <div style="font-size:20px">🖼</div>
+            <p>Tap to change photo</p>
+          </div>
+          <div class="ipv fw" id="eiPv">
+            <img id="eiEl" src="" alt="style preview"/>
+            <button class="ipv-rm" onclick="clEI()">×</button>
+          </div>
+          <button class="osv" onclick="saveE()">Save Changes</button>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding-bottom:40px;margin-top:8px">
+        <button class="btn bto" onclick="spg('home')">← Back to Home</button>
+        <button class="btn bto" onclick="lkDash()">🔒 Lock Dashboard</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- #app -->
+
+<script>
+/* ════════════════════════════════════════════
+   ENIGMA ALPHA — APP LOGIC
+════════════════════════════════════════════ */
+
+/* ── Config ── */
+const ES = 'service_n9l2rlg';
+const ET = 'template_403oy4v';
+const EK = '6sh6673BxjLRXkwlq';
+const OE = 'godswillusen157@gmail.com';
+
+/* Initialise EmailJS once at load */
+(function(){ try { emailjs.init(EK); } catch(e) {} })();
+
+/* ── State ── */
+let dark = true, af = 'all', nid = 200;
+let cu = '', chts = [], oms = [];
+let rD = null, rN = null, otp = '', nImg = null, eImg = null;
+
+/* ── Styles data ── */
+let styles = [
+  {id:1, nm:'Classic Low Cut',   ds:'Clean, sharp low fade with precision razor lining.',              pr:2500, dr:'30 min', cat:'classic', ic:'✦', img:null},
+  {id:2, nm:'Skin Fade',         ds:'Seamless blend from skin to hair — the signature modern fade.',   pr:3500, dr:'40 min', cat:'modern',  ic:'◈', img:null},
+  {id:3, nm:'Temp Fade + Design',ds:'Tapered temples with a custom cut design of your choice.',        pr:4500, dr:'50 min', cat:'modern',  ic:'✸', img:null},
+  {id:4, nm:'Afro Shape-up',     ds:'Defined edges and sculpted afro silhouette.',                     pr:2000, dr:'25 min', cat:'classic', ic:'✿', img:null},
+  {id:5, nm:'Taper Fade',        ds:'Gradual taper that frames your face and elevates any look.',      pr:3000, dr:'35 min', cat:'classic', ic:'▲', img:null},
+  {id:6, nm:'Mid Fade + Waves',  ds:'360 waves trained with a crisp mid fade.',                        pr:4000, dr:'45 min', cat:'modern',  ic:'〰', img:null},
+  {id:7, nm:'Full Beard Trim',   ds:'Professional shaping, lining and grooming of your full beard.',  pr:2500, dr:'30 min', cat:'beard',   ic:'♦', img:null},
+  {id:8, nm:'Beard + Line-up',   ds:'Edge-up haircut with matching beard shaping.',                   pr:4500, dr:'50 min', cat:'beard',   ic:'✂', img:null},
+  {id:9, nm:'Hot Towel Shave',   ds:'Luxury straight-razor shave with hot towel treatment.',           pr:3500, dr:'35 min', cat:'beard',   ic:'◆', img:null},
+  {id:10,nm:'Kids Cut (0–10)',   ds:'Gentle, precise cut for your little ones.',                       pr:1500, dr:'25 min', cat:'kids',    ic:'★', img:null},
+  {id:11,nm:'Kids Fade',         ds:'Stylish fade for kids — fresh and confident.',                    pr:2000, dr:'30 min', cat:'kids',    ic:'✩', img:null},
+  {id:12,nm:'Haircut + Wash',    ds:'Premium haircut with relaxing wash and conditioning.',            pr:5000, dr:'60 min', cat:'modern',  ic:'◇', img:null},
+];
+let cart = [];
+
+/* ── Helpers ── */
+const $ = id => document.getElementById(id);
+const f  = n  => '₦' + Number(n).toLocaleString();
+const ts = () => new Date().toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'});
+const uid= () => Math.random().toString(36).slice(2,8).toUpperCase();
+
+function toast(m) {
+  const e = $('toast');
+  e.textContent = m; e.classList.add('show');
+  setTimeout(() => e.classList.remove('show'), 2400);
+}
+
+/* ── Theme ── */
+function togTheme() {
+  dark = !dark;
+  $('app').setAttribute('data-theme', dark ? '' : 'light');
+  $('tb').textContent = dark ? '☀' : '☾';
+  document.querySelector('meta[name="theme-color"]').content = dark ? '#0C0A10' : '#F5F2EC';
+}
+
+/* ── Scroll frosted-glass nav ── */
+window.addEventListener('scroll', () => {
+  $('mn').classList.toggle('scrolled', window.scrollY > 8);
+}, { passive: true });
+
+/* ── Page navigation ── */
+function spg(p) {
+  document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
+  $(p + 'Page').classList.add('active');
+  [['H','home'],['A','about'],['O','owner']].forEach(([k,v]) => {
+    const d = $('d'+k), m = $('m'+k);
+    if (d) d.classList.toggle('on', v === p);
+    if (m) m.classList.toggle('on', v === p);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── Mobile menu ── */
+function togMob() {
+  $('ham').classList.toggle('open');
+  $('mobm').classList.toggle('open');
+}
+function clMob() {
+  $('ham').classList.remove('open');
+  $('mobm').classList.remove('open');
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('#ham') && !e.target.closest('#mobm')) clMob();
+});
+
+/* ── Cart panel views ── */
+function goV(v) {
+  document.querySelectorAll('.pv').forEach(x => x.classList.remove('on'));
+  const el = $(v); if (el) el.classList.add('on');
+  if (v === 'vH') rdChat();
+}
+function openCart() {
+  $('ov').classList.add('open');
+  $('cp').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  goV('vC');
+}
+function closeCart() {
+  $('ov').classList.remove('open');
+  $('cp').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ── Skeleton loader ── */
+function bldSkels(n) {
+  $('sg').innerHTML = Array.from({length: n}).map(() => `
+    <div class="skc">
+      <div class="skel" style="width:100%;aspect-ratio:16/10;border-radius:10px"></div>
+      <div class="skel" style="width:28%;height:9px"></div>
+      <div class="skel" style="width:68%;height:15px"></div>
+      <div class="skel" style="width:100%;height:9px"></div>
+      <div class="skel" style="width:80%;height:9px"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--bd)">
+        <div class="skel" style="width:56px;height:9px"></div>
+        <div class="skel" style="width:82px;height:28px;border-radius:6px"></div>
+      </div>
+    </div>`).join('');
+  $('sg').style.display = 'grid';
+  $('gg').style.display = 'none';
+}
+
+/* ── Render styles grid ── */
+function rdGrid(filter, skip) {
+  af = filter;
+  if (!skip) { bldSkels(6); setTimeout(() => drGrid(filter), 880); }
+  else drGrid(filter);
+}
+function drGrid(filter) {
+  const items = filter === 'all' ? styles : styles.filter(s => s.cat === filter);
+  const g = $('gg');
+  if (!items.length) {
+    g.innerHTML = '<div style="padding:36px;text-align:center;color:var(--tx3);grid-column:1/-1">No styles here yet.</div>';
+  } else {
+    g.innerHTML = items.map((s, i) => {
+      const ci  = cart.find(c => c.id === s.id), qty = ci ? ci.qty : 0;
+      return `<div class="sc" style="animation-delay:${i * 55}ms">
+        <div class="ciw">
+          ${s.img ? `<img class="ci-img" src="${s.img}" alt="${s.nm}" loading="lazy"/>` : `<div class="cph">${s.ic}</div>`}
+          <div class="cpb">${f(s.pr)}</div>
+        </div>
+        <div class="ccat">${s.cat}</div>
+        <div class="cnm">${s.nm}</div>
+        <div class="cds">${s.ds}</div>
+        <div class="cft">
+          <span class="cdr">⏱ ${s.dr}</span>
+          ${qty > 0
+            ? `<div class="qw">
+                <button class="qb" onclick="chQ(${s.id},-1)">−</button>
+                <span class="qn">${qty}</span>
+                <button class="qb" onclick="chQ(${s.id},1)">+</button>
+               </div>`
+            : `<button class="abtn" onclick="chQ(${s.id},1)">Add to Cart</button>`
+          }
+        </div>
+      </div>`;
+    }).join('');
+  }
+  $('sg').style.display = 'none';
+  g.style.display = 'grid';
+}
+function fltG(cat, btn) {
+  document.querySelectorAll('.fp').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  rdGrid(cat);
+}
+
+/* ── Cart quantity ── */
+function chQ(id, d) {
+  const s = styles.find(x => x.id === id); if (!s) return;
+  let ci = cart.find(c => c.id === id);
+  if (!ci && d > 0) cart.push({...s, qty: 1});
+  else if (ci) { ci.qty += d; if (ci.qty <= 0) cart = cart.filter(c => c.id !== id); }
+  updC(); drGrid(af);
+  if (d > 0) toast('Added to your session ✦');
+}
+function rmI(id) { cart = cart.filter(c => c.id !== id); updC(); drGrid(af); }
+function updC() {
+  const tot = cart.reduce((s, c) => s + Number(c.pr) * c.qty, 0);
+  const cnt = cart.reduce((s, c) => s + c.qty, 0);
+  $('cc').textContent  = cnt;
+  $('cTot').textContent = f(tot);
+  $('dTot').textContent = f(tot);
+  const cl = $('cList');
+  if (!cart.length) {
+    cl.innerHTML = `<div class="mty">
+      <div class="mty-i">🛒</div>
+      <p style="font-size:13px;font-weight:500">Your cart is empty</p>
+      <p style="font-size:12px;color:var(--tx4);margin-top:4px">Browse styles above to get started</p>
+    </div>`;
+    return;
+  }
+  cl.innerHTML = cart.map(c => `
+    <div class="cir">
+      ${c.img ? `<img class="ci-i" src="${c.img}" alt="${c.nm}" loading="lazy"/>` : `<div class="ci-p">${c.ic}</div>`}
+      <div style="flex:1;min-width:0">
+        <div class="ci-nm">${c.nm}</div>
+        <div class="ci-mt">${f(c.pr)} each · ${c.dr}</div>
+        <div class="ci-qr">
+          <button class="ci-qb" onclick="chQ(${c.id},-1)">−</button>
+          <span class="ci-qn">${c.qty}</span>
+          <button class="ci-qb" onclick="chQ(${c.id},1)">+</button>
+          <span class="ci-sb">${f(c.pr * c.qty)}</span>
+        </div>
+      </div>
+      <button class="ci-rm" onclick="rmI(${c.id})">×</button>
+    </div>`).join('');
+}
+
+/* ── Payment method ── */
+function selM(el, m) {
+  document.querySelectorAll('.pm').forEach(x => x.classList.remove('sl'));
+  el.classList.add('sl');
+  $('bA').style.display = m === 'a' ? 'block' : 'none';
+  $('bO').style.display = m === 'o' ? 'block' : 'none';
+}
+
+/* ── Receipt upload ── */
+function onRcpt(e) {
+  const file = e.target.files[0]; if (!file) return;
+  if (file.size > 10 * 1024 * 1024) { toast('Image too large. Max 10MB.'); return; }
+  const r = new FileReader();
+  r.onload = ev => {
+    rD = ev.target.result; rN = file.name;
+    $('rTh').src = rD;
+    $('rFn').textContent = file.name;
+    $('rSz').textContent = (file.size / 1024).toFixed(1) + ' KB';
+    $('rBar').style.display = 'flex';
+  };
+  r.readAsDataURL(file); e.target.value = ''; toast('Receipt attached ✦');
+}
+function clRcpt() {
+  rD = null; rN = null;
+  $('rBar').style.display = 'none';
+  $('rTh').src = '';
+}
+
+/* ── Confirm booking ── */
+function confPay() {
+  const nm = $('pn').value.trim(), ph = $('pp').value.trim();
+  if (!nm) { toast('Please enter your name'); return; }
+  if (!ph) { toast('Please enter your phone'); return; }
+  if (!cart.length) { toast('Your cart is empty'); return; }
+  cu = nm;
+  const ref = 'EA-' + uid(), tot = $('dTot').textContent;
+  $('sRef').textContent = 'REF: ' + ref;
+  oms.push({ type:'bk', from:nm, time:ts(), id:uid(), read:false,
+    text:`New booking! Ref: ${ref} — ${nm} — ${tot}`, img:rD, rn:rN });
+  updBdg();
+  chts.push({ type:'own', text:`Your booking (${ref}) is confirmed ✦ Total: ${tot}. Send your payment receipt here. Shalom, ${nm}!`, time:ts(), id:uid() });
+  if (rD) chts.push({ type:'usr', text:'Payment receipt:', time:ts(), id:uid(), img:rD });
+  clRcpt(); goV('vS');
+}
+function rstAll() {
+  cart = []; updC(); drGrid(af); closeCart(); goV('vC');
+  $('pn').value = ''; $('pp').value = ''; clRcpt();
+}
+
+/* ── Chat ── */
+const AR = [
+  'Thank you! We have received your message and will confirm shortly. Shalom ✦',
+  'Receipt received! Godswill will personally verify your payment. Peace be with you!',
+  'Received! Your booking is being confirmed. Shalom — may your day be blessed. ✦',
+  'Thank you! We look forward to welcoming you to Enigma Alpha. Shalom ✦'
+];
+function initC() {
+  if (!chts.length) chts.push({ type:'own', text:'Welcome to Enigma Alpha Barber Studio! ✦ After payment, send your receipt here for fast confirmation. Shalom.', time:ts(), id:uid() });
+}
+function rdChat() {
+  initC();
+  const box = $('msgs');
+  box.innerHTML = chts.map(m => `
+    <div class="msg ${m.type === 'own' ? 'own' : 'usr'}">
+      <div>
+        <div class="bbl">
+          ${m.text}
+          ${m.img ? `<img class="rimp" src="${m.img}" alt="receipt" loading="lazy"/>` : ''}
+        </div>
+        <div class="msgt">${m.type === 'own' ? 'Studio' : 'You'} · ${m.time}</div>
+      </div>
+    </div>`).join('');
+  box.scrollTop = box.scrollHeight;
+}
+function sendMsg() {
+  const inp = $('ci2'), tx = inp.value.trim();
+  if (!tx && !rD) return;
+  if (!cu) cu = 'Customer';
+  const msg = { type:'usr', text: tx || (rD ? 'Payment receipt sent.' : ''), time:ts(), id:uid(), from:cu, img:rD, rn:rN };
+  chts.push(msg); oms.push({...msg, read:false}); updBdg();
+  inp.value = ''; clRcpt(); rdChat(); typingAnim();
+}
+function typingAnim() {
+  const box = $('msgs');
+  const el = document.createElement('div');
+  el.className = 'msg own'; el.id = 'tyEl';
+  el.innerHTML = '<div><div class="bbl"><div class="tyd"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></div></div>';
+  box.appendChild(el); box.scrollTop = box.scrollHeight;
+  setTimeout(() => {
+    const e = $('tyEl'); if (e) e.remove();
+    chts.push({ type:'own', text: AR[Math.floor(Math.random() * AR.length)], time:ts(), id:uid() });
+    rdChat();
+  }, 1500);
+}
+function chatEnter(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMsg(); } }
+function updBdg() {
+  const n = oms.filter(m => !m.read).length;
+  const b = $('ubg'); if (!b) return;
+  if (n > 0) { b.style.display = 'inline-block'; b.textContent = n + ' new'; }
+  else b.style.display = 'none';
+}
+function rdOMsgs() {
+  const list = $('omsg');
+  oms.forEach(m => m.read = true); updBdg();
+  if (!oms.length) { list.innerHTML = '<div class="nom">No messages yet.</div>'; return; }
+  list.innerHTML = [...oms].reverse().map(m => `
+    <div class="om${m.read ? '' : ' ur'}">
+      <div class="om-h"><span class="om-f">${m.from || 'Customer'}</span><span class="om-t">${m.time}</span></div>
+      <div class="om-b">${m.text}</div>
+      ${m.img ? `<img class="om-i" src="${m.img}" alt="receipt" loading="lazy"/>` : ''}
+      <div class="rr">
+        <input type="text" placeholder="Reply…" id="rp_${m.id}" onkeydown="if(event.key==='Enter')rply('${m.id}')"/>
+        <button class="rrs" onclick="rply('${m.id}')">Send</button>
+      </div>
+    </div>`).join('');
+}
+function rply(mid) {
+  const inp = $('rp_' + mid); if (!inp || !inp.value.trim()) return;
+  chts.push({ type:'own', text: inp.value.trim(), time:ts(), id:uid() });
+  inp.value = ''; toast('Reply sent ✦');
+}
+
+/* ── OTP / EmailJS ── */
+function sSt(el, msg, tp) {
+  const e = $(el); if (e) e.innerHTML = `<div class="sb ${tp}">${msg}</div>`;
+}
+async function reqOTP() {
+  const em = $('oe').value.trim().toLowerCase(), btn = $('ob');
+  if (em !== OE) { sSt('es2', 'Access denied. Only the registered owner email is authorised.', 'er2'); return; }
+  otp = Math.floor(100000 + Math.random() * 899999).toString();
+  btn.disabled = true; btn.innerHTML = '<span class="sp2"></span>Sending…';
+  sSt('es2', 'Sending your verification code…', 'in2');
+  try {
+    await emailjs.send(ES, ET, { passcode: otp, email: OE, to_name: 'Godswill' });
+    btn.disabled = false; btn.innerHTML = 'Send OTP to My Email →';
+    sSt('es2', '✦ Code sent! Check your Gmail inbox within 60 seconds.', 'ok2');
+    $('es').style.display = 'none'; $('os').style.display = 'block'; $('o1').focus();
+  } catch (err) {
+    btn.disabled = false; btn.innerHTML = 'Send OTP to My Email →';
+    const d = err && err.text ? err.text : (err && err.message ? err.message : JSON.stringify(err));
+    sSt('es2', `Send failed. Check: (1) Gmail service connected at emailjs.com → Email Services (2) Template has {{passcode}} in body and {{email}} in To field (3) Public key is correct. Error: ${d}`, 'er2');
+  }
+}
+function oNxt(el, nx) { if (el.value.length === 1) { const n = $(nx); if (n) n.focus(); } }
+function oLst()       { if ($('o6').value.length === 1) verOTP(); }
+function verOTP() {
+  const ent = ['o1','o2','o3','o4','o5','o6'].map(x => $(x).value).join('');
+  if (ent === otp && otp !== '') {
+    $('ls').style.display = 'none'; $('od').style.display = 'block';
+    rdOList(); rdOMsgs(); toast('Welcome, Godswill ✦');
+  } else {
+    sSt('os2', 'Incorrect code. Please check your Gmail and try again.', 'er2');
+    ['o1','o2','o3','o4','o5','o6'].forEach(x => { const e = $(x); if (e) e.value = ''; });
+    $('o1').focus();
+  }
+}
+function bkEm() {
+  $('es').style.display = 'block'; $('os').style.display = 'none';
+  $('es2').innerHTML = '';
+  ['o1','o2','o3','o4','o5','o6'].forEach(x => { const e = $(x); if (e) e.value = ''; });
+}
+function lkDash() {
+  $('ls').style.display = 'block'; $('od').style.display = 'none';
+  $('es').style.display = 'block'; $('os').style.display = 'none';
+  const em = $('oe'); if (em) em.value = ''; $('es2').innerHTML = '';
+  ['o1','o2','o3','o4','o5','o6'].forEach(x => { const e = $(x); if (e) e.value = ''; });
+  otp = ''; toast('Dashboard locked securely ✦');
+}
+function chgPin() {
+  const p1 = $('np1').value, p2 = $('np2').value, m = $('pm2');
+  if (!p1 || p1.length < 4) { m.style.color = 'var(--err)'; m.textContent = 'PIN must be 4 digits.'; return; }
+  if (p1 !== p2) { m.style.color = 'var(--err)'; m.textContent = 'PINs do not match.'; return; }
+  m.style.color = 'var(--gd)'; m.textContent = 'PIN updated successfully ✦';
+  $('np1').value = ''; $('np2').value = '';
+  setTimeout(() => m.textContent = '', 3000);
+}
+
+/* ── Styles CRUD ── */
+function rdOList() {
+  const list = $('owL');
+  if (!styles.length) { list.innerHTML = '<div class="nom">No styles yet.</div>'; return; }
+  list.innerHTML = styles.map(s => `
+    <div class="owr">
+      <div class="oth">${s.img ? `<img src="${s.img}" alt="${s.nm}" loading="lazy"/>` : `<span>${s.ic}</span>`}</div>
+      <div><div class="onm">${s.nm}</div><div class="ome">${s.cat} · ${s.dr}</div></div>
+      <div class="opr">${f(s.pr)}</div>
+      <button class="eb" onclick="opEdit(${s.id})">Edit</button>
+      <button class="db" onclick="delS(${s.id})">Del</button>
+    </div>`).join('');
+}
+function onSImg(e, mode) {
+  const file = e.target.files[0]; if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { toast('Image too large. Max 5MB.'); return; }
+  const r = new FileReader();
+  r.onload = ev => {
+    if (mode === 'n') { nImg = ev.target.result; $('niEl').src = nImg; $('niPv').style.display = 'block'; }
+    else { eImg = ev.target.result; $('eiEl').src = eImg; $('eiPv').style.display = 'block'; }
+  };
+  r.readAsDataURL(file); e.target.value = '';
+}
+function clNI() { nImg = null; $('niPv').style.display = 'none'; }
+function clEI() { eImg = null; $('eiPv').style.display = 'none'; }
+
+function addS() {
+  const nm = $('nN').value.trim(), pr = parseInt($('nP').value);
+  if (!nm) { toast('Enter a style name'); return; }
+  if (isNaN(pr) || pr <= 0) { toast('Enter a valid price'); return; }
+  styles.push({ id: nid++, nm, pr,
+    cat: $('nC').value,
+    dr:  $('nD').value.trim()  || '30 min',
+    ds:  $('nDs').value.trim() || 'Premium barber service.',
+    ic:  $('nI').value.trim()  || '✦',
+    img: nImg || null,
+  });
+  ['nN','nP','nD','nDs','nI'].forEach(x => { const e = $(x); if (e) e.value = ''; });
+  $('nC').value = 'classic'; nImg = null; clNI();
+  rdOList(); drGrid(af); toast('Style added to menu ✦');
+}
+function opEdit(eid) {
+  const s = styles.find(x => x.id === eid); if (!s) return;
+  [['eId',eid],['eN',s.nm],['eP',s.pr],['eC',s.cat],['eD',s.dr],['eDs',s.ds],['eI',s.ic]]
+    .forEach(([fi, v]) => { const e = $(fi); if (e) e.value = v; });
+  eImg = s.img || null;
+  const pw = $('eiPv'), pi = $('eiEl');
+  if (s.img) { pi.src = s.img; pw.style.display = 'block'; } else pw.style.display = 'none';
+  $('eT').textContent = 'Editing: ' + s.nm;
+  $('ew').style.display = 'block';
+  $('ew').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+function saveE() {
+  const eid = parseInt($('eId').value);
+  const idx = styles.findIndex(x => x.id === eid); if (idx < 0) return;
+  const pr = parseInt($('eP').value);
+  if (isNaN(pr) || pr <= 0) { toast('Enter a valid price'); return; }
+  styles[idx] = { ...styles[idx],
+    nm:  $('eN').value.trim()  || styles[idx].nm,
+    pr,
+    cat: $('eC').value,
+    dr:  $('eD').value.trim()  || styles[idx].dr,
+    ds:  $('eDs').value.trim() || styles[idx].ds,
+    ic:  $('eI').value.trim()  || styles[idx].ic,
+    img: eImg !== null ? eImg : styles[idx].img,
+  };
+  rdOList(); drGrid(af); updC();
+  $('ew').style.display = 'none'; eImg = null; clEI();
+  toast('Style updated ✦');
+}
+function delS(eid) {
+  if (!confirm('Remove this style from the menu?')) return;
+  styles = styles.filter(s => s.id !== eid);
+  cart   = cart.filter(c => c.id !== eid);
+  rdOList(); drGrid(af); updC(); toast('Style removed');
+}
+
+/* ── Boot ── */
+document.addEventListener('DOMContentLoaded', () => {
+  rdGrid('all'); updC(); initC();
+});
+
+/* ── PWA Service Worker ── */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
