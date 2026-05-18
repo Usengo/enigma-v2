@@ -1,0 +1,192 @@
+/* ═══════════════════════════════════════════
+   ENIGMA ALPHA — RESPONSIVE STYLES
+   Mobile-first, all screen sizes covered
+═══════════════════════════════════════════ */
+
+/* ── Small phones (≤360px) ── */
+@media (max-width: 360px) {
+  .logo-main    { font-size: 1rem; letter-spacing: 2px; }
+  .logo-sub     { font-size: 6px; letter-spacing: 4px; }
+  .nbtn         { font-size: 7px; letter-spacing: 1px; }
+  .theme-label  { display: none; }
+  .cart-label   { display: none; }
+  .theme-toggle { padding: .4rem; }
+  .cart-btn     { padding: .4rem .5rem; gap: 3px; }
+
+  .hero         { padding: 3rem 1.2rem 2.5rem; }
+  .hero-h       { font-size: 2.2rem; }
+  .hero-p       { font-size: 9px; letter-spacing: 3px; }
+  .shalom-card  { padding: 1.3rem 1.2rem; }
+  .shalom-card p { font-size: .95rem; }
+
+  .stat-n       { font-size: 1.7rem; }
+  .stat-l       { font-size: 7px; letter-spacing: 2px; }
+  .stat         { padding: 1.2rem .5rem; }
+
+  .styles-grid,
+  .skel-grid    { grid-template-columns: 1fr; margin: 1rem .5rem 1.5rem; }
+
+  .filters      { padding: 1rem .5rem 0; gap: .3rem; }
+  .fbtn         { padding: .4rem .7rem; font-size: 7px; letter-spacing: 2px; }
+
+  .otp-inputs   { gap: .25rem; }
+  .otp-inputs input { width: 38px; height: 44px; font-size: 1rem; }
+
+  .o-form       { grid-template-columns: 1fr; }
+
+  .hero-btns    { flex-direction: column; align-items: center; }
+  .btn-gold,
+  .btn-outline  { width: 100%; max-width: 280px; }
+
+  .about-wrap,
+  .owner-wrap   { padding: 2rem 1rem; }
+  .shal-h       { font-size: 1.8rem; }
+
+  .c-panel      { width: 100vw; }
+}
+
+/* ── Phones (361px–480px) ── */
+@media (max-width: 480px) {
+  :root { --nav-h: 56px; }
+
+  .lux-nav      { padding: .75rem 1rem; }
+  .logo-main    { font-size: 1.1rem; letter-spacing: 3px; }
+  .logo-sub     { display: none; }
+  .nbtn         { font-size: 8px; letter-spacing: 1.5px; }
+
+  .theme-label  { display: none; }
+  .cart-label   { display: none; }
+
+  .hero         { padding: 3.5rem 1.4rem 2.8rem; }
+  .hero-h       { font-size: clamp(2.2rem, 8vw, 3rem); }
+  .shalom-card  { padding: 1.4rem 1.4rem; margin-bottom: 1.6rem; }
+
+  .styles-grid,
+  .skel-grid    { grid-template-columns: 1fr; margin: 1rem .75rem 1.5rem; }
+
+  .card-name    { font-size: 1.15rem; }
+  .card-desc    { font-size: 10px; }
+
+  .filters      { padding: 1rem 1rem 0; }
+  .fbtn         { padding: .4rem .8rem; }
+
+  .c-panel      { width: 100vw; }
+  .c-hd         { padding: .9rem 1.2rem; }
+  .c-body       { padding: .9rem 1.2rem; }
+  .c-ft         { padding: .9rem 1.2rem; }
+  .chat-input-row { padding: .75rem 1.2rem; }
+  .chat-notice  { margin: 0 1.2rem .5rem; }
+  .chat-msgs    { padding: .8rem 1.2rem; }
+
+  .msg-bubble   { font-size: 11px; padding: .6rem .85rem; }
+
+  .o-item       { grid-template-columns: auto 1fr auto auto; }
+  .o-item-price { display: none; }
+
+  .otp-btns     { flex-direction: column; }
+  .otp-btns .btn-gold,
+  .otp-btns .btn-outline { width: 100%; }
+
+  .about-wrap,
+  .owner-wrap   { padding: 2rem 1.2rem; }
+
+  .vals-grid    { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .foot-links   { gap: 1rem; }
+  .flnk         { font-size: 7px; letter-spacing: 2px; }
+
+  .shal-h       { font-size: 2rem; }
+  .shal-body    { font-size: .95rem; }
+}
+
+/* ── Tablets portrait (481px–768px) ── */
+@media (min-width: 481px) and (max-width: 768px) {
+  .logo-sub     { font-size: 6px; letter-spacing: 5px; }
+
+  .hero         { padding: 4rem 2rem 3.2rem; }
+
+  .styles-grid,
+  .skel-grid    { grid-template-columns: repeat(2, 1fr); margin: 1rem 1rem 1.5rem; }
+
+  .c-panel      { width: min(420px, 100vw); }
+
+  .about-wrap,
+  .owner-wrap   { padding: 2.5rem 1.5rem; }
+
+  .vals-grid    { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Tablets landscape (769px–1024px) ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .styles-grid,
+  .skel-grid    { grid-template-columns: repeat(3, 1fr); }
+
+  .c-panel      { width: 420px; }
+}
+
+/* ── Desktop (≥1025px) ── */
+@media (min-width: 1025px) {
+  .styles-grid,
+  .skel-grid    { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+
+  .c-panel      { width: 400px; }
+
+  .nbtn         { font-size: 9px; }
+  .logo-main    { font-size: 1.35rem; }
+}
+
+/* ── Safe areas for notched phones ── */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .c-ft,
+  .c-ft-btns,
+  .chat-input-row {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+  footer {
+    padding-bottom: calc(2.5rem + env(safe-area-inset-bottom));
+  }
+  .lux-nav {
+    padding-top: calc(.85rem + env(safe-area-inset-top));
+  }
+}
+
+/* ── Touch interaction improvements ── */
+@media (hover: none) and (pointer: coarse) {
+  .style-card:hover { background: var(--surface); }
+  .qty-btn:hover    { background: none; color: var(--gold); }
+  .qty-btn:active   { background: var(--gold); color: var(--bg); }
+  .add-first:hover  { background: none; color: var(--gold); border-color: var(--gold3); }
+  .add-first:active { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+  .big-btn:hover    { background: var(--gold); }
+  .big-btn:active   { background: var(--gold2); }
+  .nbtn:hover       { color: var(--text3); }
+  .nbtn:active,
+  .nbtn.on          { color: var(--gold); }
+  .fbtn:hover       { background: none; border-color: var(--border); color: var(--text3); }
+  .fbtn:active,
+  .fbtn.on          { border-color: var(--gold); color: var(--gold); background: rgba(212,168,64,.06); }
+}
+
+/* ── Landscape phones ── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero         { padding: 2rem 2rem 1.5rem; }
+  .hero-h       { font-size: 2rem; }
+  .shalom-card  { display: none; }
+  .hero-p       { margin: .5rem 0 1rem; }
+  .stat         { padding: 1rem .5rem; }
+  .stat-n       { font-size: 1.6rem; }
+  .c-panel      { width: 60vw; min-width: 320px; }
+}
+
+/* ── Print ── */
+@media print {
+  .lux-nav,
+  .c-panel,
+  .c-ov,
+  .flash,
+  .cart-btn,
+  .hero-btns,
+  .filters { display: none !important; }
+  body { background: #fff; color: #000; }
+}

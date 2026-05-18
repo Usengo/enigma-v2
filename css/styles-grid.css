@@ -1,0 +1,170 @@
+/* ═══════════════════════════════════════════
+   ENIGMA ALPHA — STYLES GRID & CARDS
+═══════════════════════════════════════════ */
+
+.styles-grid,
+.skel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  margin: 1.2rem 1rem 2rem;
+}
+
+.skel-card {
+  background: var(--surface);
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+
+.style-card {
+  background: var(--surface);
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  transition: background .25s;
+  animation: fadeUp .4s ease;
+}
+.style-card:hover { background: var(--bg2); }
+
+/* ── Card image ── */
+.card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: .4rem;
+  border-radius: var(--radius);
+}
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.card-ph {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: var(--gold);
+}
+
+/* ── Price badge ── */
+.card-price {
+  position: absolute;
+  bottom: .6rem;
+  right: .6rem;
+  background: var(--gold);
+  color: var(--bg);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 10px;
+  letter-spacing: 1px;
+  font-family: 'Josefin Sans', sans-serif;
+  border-radius: var(--radius);
+}
+
+/* ── Card text ── */
+.card-cat {
+  font-size: 8px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  transition: color var(--trans);
+  line-height: 1.2;
+}
+.card-desc {
+  font-size: 11px;
+  color: var(--text3);
+  line-height: 1.75;
+  flex: 1;
+}
+
+/* ── Card footer ── */
+.card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: .7rem;
+  border-top: 1px solid var(--border);
+  gap: .5rem;
+}
+.card-dur {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--text3);
+  text-transform: uppercase;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* ── Quantity controls ── */
+.qty-ctrl {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--gold3);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.qty-btn {
+  background: none;
+  border: none;
+  color: var(--gold);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: background .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.qty-btn:hover,
+.qty-btn:active { background: var(--gold); color: var(--bg); }
+
+.qty-num {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 0 8px;
+  min-width: 28px;
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.add-first {
+  background: none;
+  border: 1px solid var(--gold3);
+  color: var(--gold);
+  padding: .4rem .9rem;
+  cursor: pointer;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all .2s;
+  font-weight: 700;
+  border-radius: var(--radius);
+  min-height: 36px;
+  white-space: nowrap;
+}
+.add-first:hover,
+.add-first:active { background: var(--gold); color: var(--bg); border-color: var(--gold); }

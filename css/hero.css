@@ -1,0 +1,182 @@
+/* ═══════════════════════════════════════════
+   ENIGMA ALPHA — HERO & STATS
+═══════════════════════════════════════════ */
+
+.hero {
+  background: var(--bg);
+  padding: 4.5rem 2rem 3.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--trans);
+}
+
+.hero-tag {
+  display: inline-block;
+  font-size: 8px;
+  letter-spacing: 7px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--gold4);
+  padding-bottom: .4rem;
+}
+
+.hero-h {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.05;
+  margin-bottom: .6rem;
+  transition: color var(--trans);
+}
+.hero-h em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero-p {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--text3);
+  margin: .8rem 0 2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.shalom-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  padding: 1.8rem 2rem;
+  position: relative;
+  transition: background var(--trans);
+  animation: goldglow 4s ease infinite;
+  text-align: left;
+}
+.shalom-card::before {
+  content: '\201C';
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.5rem;
+  color: var(--gold);
+  opacity: .15;
+  position: absolute;
+  top: -.5rem;
+  left: .7rem;
+  line-height: 1;
+  pointer-events: none;
+}
+.shalom-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--text2);
+  line-height: 1.95;
+  font-weight: 500;
+  transition: color var(--trans);
+  padding-left: .5rem;
+}
+.shalom-card cite {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  margin-top: 1rem;
+  font-style: normal;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.hero-btns {
+  display: flex;
+  gap: .8rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── About/Owner hero variants ── */
+.about-hero   { padding: 4rem 2rem 3rem; }
+.about-hero-h { font-size: clamp(2rem, 5vw, 4rem); }
+.owner-hero   { padding: 3rem 2rem 2.5rem; }
+.owner-hero-h { font-size: clamp(1.8rem, 4vw, 3rem); }
+
+/* ── Stats bar ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stat {
+  padding: 1.6rem 1rem;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+.stat-l {
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--text3);
+  text-transform: uppercase;
+  margin-top: 4px;
+  font-weight: 700;
+}
+
+/* ── Section heading ── */
+.sec-head {
+  text-align: center;
+  padding: 2.5rem 2rem 1.5rem;
+}
+.sec-label {
+  font-size: 8px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: .6rem;
+  font-weight: 700;
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  transition: color var(--trans);
+}
+
+/* ── Filters ── */
+.filters {
+  display: flex;
+  gap: .4rem;
+  padding: 1.2rem 2rem 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.fbtn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text3);
+  padding: .5rem 1.1rem;
+  cursor: pointer;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all .2s;
+  font-weight: 600;
+  border-radius: var(--radius);
+  min-height: 36px;
+}
+.fbtn:hover,
+.fbtn.on {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(212,168,64,.06);
+}

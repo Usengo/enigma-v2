@@ -1,0 +1,56 @@
+/* ═══════════════════════════════════════════
+   ENIGMA ALPHA — CSS CUSTOM PROPERTIES
+   Dark & Light luxury theme variables
+═══════════════════════════════════════════ */
+
+:root {
+  /* Dark theme (default) */
+  --bg:       #080604;
+  --bg2:      #131008;
+  --bg3:      #1A160C;
+  --surface:  #201A10;
+  --border:   #3D3220;
+  --border2:  #5A4A28;
+
+  --text:     #F8F3EB;
+  --text2:    #D4C4A0;
+  --text3:    #9A8A6A;
+
+  --gold:     #D4A840;
+  --gold2:    #F0C860;
+  --gold3:    #A07820;
+  --gold4:    #6A5010;
+
+  --ruby:     #A02020;
+  --sk1:      #1A1608;
+  --sk2:      #2A2210;
+
+  /* Spacing */
+  --nav-h:    60px;
+  --radius:   2px;
+
+  /* Transitions */
+  --trans:    0.4s ease;
+}
+
+[data-theme="light"] {
+  --bg:       #FAF6EE;
+  --bg2:      #F0E8D8;
+  --bg3:      #E8DCC8;
+  --surface:  #FFFFFF;
+  --border:   #D8C8A8;
+  --border2:  #C0A878;
+
+  --text:     #18120A;
+  --text2:    #3A2C18;
+  --text3:    #7A6A4A;
+
+  --gold:     #8A6018;
+  --gold2:    #B08030;
+  --gold3:    #6A4A10;
+  --gold4:    #4A3008;
+
+  --ruby:     #8B1A1A;
+  --sk1:      #EDE4D4;
+  --sk2:      #DDD0BC;
+}

@@ -1,0 +1,192 @@
+/* ═══════════════════════════════════════════
+   ENIGMA ALPHA — ABOUT PAGE & FOOTER
+═══════════════════════════════════════════ */
+
+.about-wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.about-shalom {
+  background: var(--surface);
+  border: 1px solid var(--gold3);
+  padding: 2.2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  transition: background var(--trans);
+  border-radius: var(--radius);
+}
+.shal-top {
+  font-size: 8px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: .8rem;
+  font-weight: 700;
+}
+.shal-h {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 1.1rem;
+}
+.shal-body {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--text2);
+  line-height: 2.1;
+  font-style: italic;
+  font-weight: 500;
+  transition: color var(--trans);
+  text-align: left;
+}
+.shal-sig {
+  font-size: 8px;
+  letter-spacing: 5px;
+  color: var(--text3);
+  text-transform: uppercase;
+  margin-top: 1.2rem;
+  font-weight: 700;
+}
+
+.about-sec { margin-bottom: 2.5rem; }
+.about-sec h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: .8rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--border);
+}
+.about-sec p {
+  font-size: 12px;
+  color: var(--text3);
+  line-height: 2;
+}
+
+/* ── Values grid ── */
+.vals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  margin-top: 1rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.val-card {
+  background: var(--surface);
+  padding: 1.2rem;
+  text-align: center;
+  transition: background var(--trans);
+}
+.val-ico {
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: .4rem;
+}
+.val-t {
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: .3rem;
+  font-weight: 700;
+}
+.val-d {
+  font-size: 10px;
+  color: var(--text3);
+  line-height: 1.7;
+}
+
+/* ── Contact grid ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  margin-top: 1rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.contact-cell {
+  background: var(--surface);
+  padding: 1.1rem;
+  transition: background var(--trans);
+}
+.contact-lbl {
+  font-size: 7px;
+  letter-spacing: 3px;
+  color: var(--text3);
+  text-transform: uppercase;
+  margin-bottom: .35rem;
+  font-weight: 700;
+}
+.contact-val {
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.contact-email { font-size: 10px; word-break: break-all; }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  background: var(--bg2);
+  transition: background var(--trans), border-color var(--trans);
+}
+.foot-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: .4rem;
+  font-weight: 700;
+}
+.foot-shalom {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--text2);
+  font-size: .9rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+.foot-links {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: .8rem;
+}
+.flnk {
+  background: none;
+  border: none;
+  color: var(--text3);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color .2s;
+  padding: .4rem 0;
+  font-weight: 600;
+  min-height: 36px;
+}
+.flnk:hover { color: var(--gold); }
+.foot-copy {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--text3);
+  text-transform: uppercase;
+  font-weight: 600;
+}
